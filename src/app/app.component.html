@@ -1,1 +1,23 @@
-<div class="container mx-auto">Test</div>
+<div class="fixed w-screen h-screen top-0 left-0 -z-50 bg-gradient-blue"></div>
+<div class="h-screen">
+  <div class="container mx-auto h-full flex flex-col items-center justify-center space-y-10 px-4">
+    <img src="assets/logos/miu-holdings-logo.png" alt="MIU Holdings" class="md:w-96 w-44" />
+    <p class="flex space-x-1 items-center">
+      <span class="text-xl">Who is a</span> <img class="w-8" src="assets/images/gb-flag.png" /><span class="text-xl"
+        >?</span
+      >
+    </p>
+    <form class="flex flex-col space-y-3 items-center" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="shadow-lg flex">
+        <input
+          class="px-4 h-12 rounded-l bg-white font-bold outline-none border-none focus:ring-0"
+          placeholder="Enter your name"
+          formControlName="answer"
+        />
+        <button class="h-12 font-bold bg-purple-500 text-white px-4 rounded-r" type="submit">Submit</button>
+      </div>
+      <div class="bg-red-500 rounded text-white px-1 shadow" *ngIf="form.errors">Wrong answer!</div>
+      <div class="bg-green-500 rounded text-white px-1 shadow" *ngIf="response$ | async">Correct!</div>
+    </form>
+  </div>
+</div>
